@@ -1,17 +1,18 @@
-package org.example;
+package actions;
 
+import constants.PathAPI;
 import io.qameta.allure.Description; // импорт Description
 import io.qameta.allure.Step; // импорт Step
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.example.Courier;
 
 import static io.restassured.RestAssured.given;
 
-public class CourierClient {
+// Вызовы ручек вынесены в отдельный класс CourierClient
+public class CourierClient extends BaseAPI { // класс CourierClient - наследник класса BaseAPI
 
-    public CourierClient() {
+    public CourierClient()  {
 
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
     }
 
     @Step("Метод для шага Создание курьера")
@@ -19,13 +20,13 @@ public class CourierClient {
     public Response createCourier(Courier courier) {
         return
                 // метод given() помогает сформировать запрос
-                given()
+                given(RequestSpecification()) // вызываем метод RequestSpecification(), где хранится Base url
                         .header("Content-type", "application/json") // Строка указывает, что данные в теле запроса передаются в формате JSON
                         .and()
                         .body(courier)
                         .when()
                         // отправляем POST-запрос с помощью метода post, недостающую часть URL (ручку) передаём в него в качестве параметра
-                        .post("/api/v1/courier");
+                        .post(PathAPI.COURIER_BASE_URL);
 
 
     }
@@ -34,12 +35,12 @@ public class CourierClient {
     @Description("POST на ручку /api/v1/courier/login")
     public Response loginCourier(Courier courier) {
         return
-                given()
+                given(RequestSpecification()) // вызываем метод RequestSpecification(), где хранится Base url
                         .header("Content-type", "application/json")
                         .and()
                         .body(courier)
                         .when()
-                        .post("/api/v1/courier/login");
+                        .post(PathAPI.COURIER_LOGIN);
     }
 
     @Step("Удалить курьера из системы")
@@ -50,12 +51,12 @@ public class CourierClient {
             int id = loginCourier(courier).then().extract().path("id");
 
 
-            given()
+            given(RequestSpecification()) // вызываем метод RequestSpecification(), где хранится Base url
                     .header("Content-type", "application/json")
                     .and()
                     .body(courier)
                     .when()
-                    .delete("/api/v1/courier/" + id);
+                    .delete(PathAPI.COURIER_BASE_URL + id);
 
         } catch (NullPointerException e) {
             System.out.println("Нечего удалять после теста");

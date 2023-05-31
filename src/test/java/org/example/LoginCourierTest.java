@@ -1,5 +1,6 @@
 package org.example;
 
+import actions.CourierClient;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;

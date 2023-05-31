@@ -1,6 +1,6 @@
 package org.example;
 
-public class Orders {
+public class Order {
     //Объявление полей
     private String firstName;
     private String lastName;
@@ -14,7 +14,7 @@ public class Orders {
 
 
     // Конструктор со всеми параметрами
-    public Orders(String firstName, String lastName, String address, int metroStation, String phone, int rentTime, String deliveryDate, String comment, String[] color) {
+    public Order(String firstName, String lastName, String address, int metroStation, String phone, int rentTime, String deliveryDate, String comment, String[] color) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -27,7 +27,7 @@ public class Orders {
     }
 
     // Конструктор без параметров
-    public Orders() { // для библиотеки, которая поможет превратить объект в JSON
+    public Order() { // для библиотеки, которая поможет превратить объект в JSON
     }
 
     // К каждому полю написать геттеры и сеттеры, они обеспечивают доступ к полям класса (Геттеры позволяют получать значения, сеттеры — изменять их)

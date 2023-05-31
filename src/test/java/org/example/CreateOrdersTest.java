@@ -1,5 +1,6 @@
 package org.example;
 
+import actions.OrderClient;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
@@ -11,12 +12,12 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 @RunWith(Parameterized.class) // Аннотация. Перед тестовым классом нужно указать раннер Parameterized — класс, который помогает запускать тесты с параметризацией
 public class CreateOrdersTest {
-    private final Orders orders; // создали поля тестового класса
+    private final Order order; // создали поля тестового класса
 
     OrderClient orderClient = new OrderClient();
 
-    public CreateOrdersTest(Orders orders) { // создали конструктор тестового класса
-        this.orders = orders;
+    public CreateOrdersTest(Order order) { // создали конструктор тестового класса
+        this.order = order;
     }
 
     @Parameterized.Parameters // добавили аннотацию
@@ -38,7 +39,7 @@ public class CreateOrdersTest {
     @Description("Ожидаемый результат: код 201, заказ создан, тело запроса содержит track")
 
     public void checkCreateValidOrder() {
-        orderClient.createOrder(orders)
+        orderClient.createOrder(order)
                 .then()
                 .assertThat()
                 .statusCode(201) // проверка статуса ответа

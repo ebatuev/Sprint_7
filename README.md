@@ -82,4 +82,10 @@ git push
 3. Создать классы с шагами для запросов CourierClient и OrderClient
 4. Создать классы с тестами CreateCourierTest, CreateOrdersTest (парам.), LoginCourierTest и GetOrderTest.
 
+Исправление замечаний:
+1. Добавлен package constants класс PathAPI - вынес урны как константы
+2. Добавлен package actions класс BaseAPI - вынес Base url, так как во всем проекте он один, поэтому нужно его присваивать один раз
+3. Согласен, заказ у нас один формируется, назвал некорректно. Переименовал Orders на Order
+4. да, класс RandomCourier в итоге не используется, пометил это в README внизу в ps. Удалил класс RandomCourier
+
 

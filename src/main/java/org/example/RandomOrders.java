@@ -1,12 +1,11 @@
 package org.example;
 
 import org.apache.commons.lang3.RandomStringUtils;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomOrders extends Orders {
+public class RandomOrders extends Order {
 
     // Генераци рандомного имени
     private static final String RANDOM_FIRSTNAME = RandomStringUtils.random(10, true, false);

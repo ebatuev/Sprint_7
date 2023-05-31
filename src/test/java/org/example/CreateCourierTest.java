@@ -1,5 +1,6 @@
 package org.example;
 
+import actions.CourierClient;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -14,8 +15,6 @@ public class CreateCourierTest {
     String randomName = RandomStringUtils.random(10, true, false);
 
     CourierClient courierClient = new CourierClient();
-
-    //Courier courier = new RandomCourier();
 
     Courier courier = new Courier(randomLogin, randomPassword, randomName);
 

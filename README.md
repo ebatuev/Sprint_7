@@ -82,6 +82,12 @@ git push
 3. Создать классы с шагами для запросов CourierClient и OrderClient
 4. Создать классы с тестами CreateCourierTest, CreateOrdersTest (парам.), LoginCourierTest и GetOrderTest.
 
+
+Allure:
+Для запуска 
+allure serve target/surefire-reports/
+
+
 Исправление замечаний:
 1. Добавлен package constants класс PathAPI - вынес урны как константы
 2. Добавлен package actions класс BaseAPI - вынес Base url, так как во всем проекте он один, поэтому нужно его присваивать один раз
